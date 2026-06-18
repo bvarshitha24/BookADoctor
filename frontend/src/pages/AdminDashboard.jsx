@@ -228,7 +228,7 @@ const AdminDashboard = () => {
         </div>
         <div className="glass-card p-6 border border-slate-200/50 dark:border-slate-800/50 bg-white/70 dark:bg-slate-900/40">
           <span className="block text-[10px] uppercase font-bold text-slate-400">Total Estimated Revenue</span>
-          <span className="text-2xl font-black text-teal-600 dark:text-teal-400">${kpis.totalRevenue}</span>
+          <span className="text-2xl font-black text-teal-600 dark:text-teal-400">₹{kpis.totalRevenue}</span>
         </div>
       </section>
 
@@ -498,8 +498,8 @@ const AdminDashboard = () => {
                   <input type="number" className="glass-input text-xs" placeholder="10" value={addDocExp} onChange={(e) => setAddDocExp(e.target.value)} required />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-slate-400 mb-1.5 uppercase">Consultation Fee ($)</label>
-                  <input type="number" className="glass-input text-xs" placeholder="120" value={addDocFee} onChange={(e) => setAddDocFee(e.target.value)} required />
+                  <label className="block text-xs font-bold text-slate-400 mb-1.5 uppercase">Consultation Fee (₹)</label>
+                  <input type="number" className="glass-input text-xs" placeholder="500" value={addDocFee} onChange={(e) => setAddDocFee(e.target.value)} required />
                 </div>
                 <div className="md:col-span-2">
                   <label className="block text-xs font-bold text-slate-400 mb-1.5 uppercase">Hospital / Clinic Name</label>

@@ -129,7 +129,7 @@ const runSeeder = async () => {
         specialization: spec,
         qualification: ['MBBS', 'MD', 'FACP', 'DNB'][i % 4],
         experience: 5 + Math.floor(Math.random() * 25), // 5-30 years
-        consultationFee: 50 + (i % 6) * 40, // 50 to 250
+        consultationFee: 300 + (i % 6) * 200, // 300 to 1300 (INR)
         hospitalName: hosp,
         address: `${500 + i} Medical Pkwy`,
         city: city,

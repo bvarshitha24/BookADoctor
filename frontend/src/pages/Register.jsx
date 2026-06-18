@@ -208,9 +208,9 @@ const Register = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Consultation Fee ($)</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Consultation Fee (₹)</label>
                   <input 
-                    type="number" className="glass-input" placeholder="100"
+                    type="number" className="glass-input" placeholder="500"
                     value={consultationFee} onChange={(e) => setConsultationFee(e.target.value)} required
                   />
                 </div>

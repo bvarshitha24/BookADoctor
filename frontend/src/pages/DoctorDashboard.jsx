@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { toast } from 'react-toastify';
-import { Calendar, Check, X, FileText, Plus, Trash2, Clock, Users, Star, DollarSign, Loader2, Save } from 'lucide-react';
+import { Calendar, Check, X, FileText, Plus, Trash2, Clock, Users, Star, IndianRupee, Loader2, Save } from 'lucide-react';
 
 const DoctorDashboard = () => {
   const { user, doctorProfile, updateProfile } = useAuth();
@@ -145,9 +145,9 @@ const DoctorDashboard = () => {
         <div className="glass-card p-6 border border-slate-200/50 dark:border-slate-800/50 bg-white/70 dark:bg-slate-900/40 flex items-center justify-between">
           <div>
             <span className="block text-[10px] uppercase font-bold text-slate-400">Total Revenue</span>
-            <span className="text-2xl font-black text-slate-700 dark:text-slate-200">${totalEarnings}</span>
+            <span className="text-2xl font-black text-slate-700 dark:text-slate-200">₹{totalEarnings}</span>
           </div>
-          <div className="p-3 bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl"><DollarSign className="h-6 w-6" /></div>
+          <div className="p-3 bg-teal-500/10 text-teal-600 dark:text-teal-400 rounded-2xl"><IndianRupee className="h-6 w-6" /></div>
         </div>
 
         <div className="glass-card p-6 border border-slate-200/50 dark:border-slate-800/50 bg-white/70 dark:bg-slate-900/40 flex items-center justify-between">

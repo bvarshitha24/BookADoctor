@@ -196,7 +196,7 @@ const DoctorSearch = () => {
 
             {/* Consultation Fees */}
             <div>
-              <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wide">Max consultation Fee ($)</label>
+              <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wide">Max consultation Fee (₹)</label>
               <input 
                 type="number" className="glass-input text-xs" placeholder="e.g. 150"
                 value={maxFee} onChange={(e) => { setMaxFee(e.target.value); setPage(1); }}
@@ -311,7 +311,7 @@ const DoctorSearch = () => {
 
                 {/* Fees */}
                 <div>
-                  <label className="block text-xs font-bold text-slate-400 mb-1.5 uppercase">Max Fees ($)</label>
+                  <label className="block text-xs font-bold text-slate-400 mb-1.5 uppercase">Max Fees (₹)</label>
                   <input type="number" className="glass-input text-xs" placeholder="Max fee" value={maxFee} onChange={(e) => { setMaxFee(e.target.value); setPage(1); }} />
                 </div>
               </div>

@@ -174,7 +174,7 @@ const DoctorProfile = () => {
             </div>
             <div className="text-center md:text-left">
               <span className="block text-[10px] uppercase font-bold text-slate-400">Consultation</span>
-              <span className="font-extrabold text-sm text-slate-700 dark:text-slate-200">${consultationFee}</span>
+              <span className="font-extrabold text-sm text-slate-700 dark:text-slate-200">₹{consultationFee}</span>
             </div>
           </div>
         </div>
@@ -312,7 +312,7 @@ const DoctorProfile = () => {
                   <p className="font-bold text-teal-600 dark:text-teal-400">Appointment Summary</p>
                   <p>Date: {selectedDate.toLocaleDateString([], { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
                   <p>Time Slot: {selectedTime}</p>
-                  <p>Consultation Fee: ${consultationFee}</p>
+                  <p>Consultation Fee: ₹{consultationFee}</p>
                 </div>
               )}
 
@@ -340,15 +340,15 @@ const DoctorProfile = () => {
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 text-xs space-y-2">
               <div className="flex justify-between font-bold text-slate-700 dark:text-slate-200">
                 <span>Clinical Booking Fee:</span>
-                <span>${consultationFee}</span>
+                <span>₹{consultationFee}</span>
               </div>
               <div className="flex justify-between text-slate-400">
                 <span>Tax & Service Levy:</span>
-                <span>$0.00</span>
+                <span>₹0.00</span>
               </div>
               <div className="flex justify-between font-extrabold text-sm text-teal-600 dark:text-teal-400 border-t border-slate-200 dark:border-slate-800 pt-2">
                 <span>Total Charge:</span>
-                <span>${consultationFee}</span>
+                <span>₹{consultationFee}</span>
               </div>
             </div>
 
@@ -383,7 +383,7 @@ const DoctorProfile = () => {
                 disabled={paymentLoading}
                 className="w-full py-3.5 text-xs font-extrabold text-white bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 rounded-xl shadow-lg shadow-teal-500/10 hover-scale flex items-center justify-center"
               >
-                {paymentLoading ? 'Bypassing secure transaction gateway...' : `Pay & Confirm $${consultationFee}`}
+                {paymentLoading ? 'Bypassing secure transaction gateway...' : `Pay & Confirm ₹${consultationFee}`}
               </button>
             </form>
           </div>

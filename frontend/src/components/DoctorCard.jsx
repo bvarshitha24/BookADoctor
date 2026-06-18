@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, MapPin, Award, DollarSign, ShieldCheck } from 'lucide-react';
+import { Star, MapPin, Award, IndianRupee, ShieldCheck } from 'lucide-react';
 
 const DoctorCard = ({ doctor }) => {
   const { user, specialization, experience, consultationFee, hospitalName, city, rating, reviewsCount, availableDays } = doctor;
@@ -67,7 +67,7 @@ const DoctorCard = ({ doctor }) => {
         <div>
           <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Consultation Fee</p>
           <div className="flex items-center font-extrabold text-lg text-slate-800 dark:text-slate-100">
-            <DollarSign className="h-4 w-4 text-teal-500" />
+            <IndianRupee className="h-4 w-4 text-teal-500" />
             <span>{consultationFee}</span>
           </div>
         </div>
