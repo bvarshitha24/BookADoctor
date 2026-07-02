@@ -28,13 +28,13 @@ const Home = () => {
   ];
 
   const testimonials = [
-    { name: 'Sarah Connor', text: 'Booking with Dr. Smith was incredibly fast. I got an appointment confirmed in 2 minutes, uploaded my files, and did a video consult.', rating: 5 },
+    { name: 'Sarah Connor', text: 'Booking with Dr. Smith was incredibly fast. I got an appointment confirmed in 2 minutes, uploaded my files, and visited the clinic on time.', rating: 5 },
     { name: 'Marcus Aurelius', text: 'The interface is highly intuitive and beautiful. Being able to see reviews before booking gives absolute peace of mind.', rating: 5 },
     { name: 'Jane Watson', text: 'Digital prescriptions saved my time. The doctor completed the consult and I downloaded the PDF prescription immediately.', rating: 5 }
   ];
 
   const faqs = [
-    { q: 'How do online consultations work?', a: 'Online consultations simulate physical clinic visits over a secure WebRTC video room. You can choose a slot, book, upload reports, and click join when the slot is active.' },
+    { q: 'How do in-clinic consultations work?', a: 'You can choose an available time slot, book online, upload any medical reports, and visit the clinic directly at your scheduled time.' },
     { q: 'Can I reschedule my appointment?', a: 'Yes. You can reschedule any confirmed appointment up to 2 hours before the start time from your patient dashboard, subject to slot availability.' },
     { q: 'Is my medical history secure?', a: 'Absolutely. We apply industry-standard JWT authentication and Mongoose sanitization layers to guarantee your records are only visible to you and your selected consultants.' }
   ];
@@ -58,7 +58,7 @@ const Home = () => {
             Book in Seconds.
           </h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Connect with certified practitioners across 20+ specializations. Receive digital prescriptions, upload medical diagnostics, and do video consultation from the comfort of home.
+            Connect with certified practitioners across 20+ specializations. Schedule clinic visits, receive digital prescriptions, and upload medical diagnostics securely.
           </p>
 
           {/* Large Search Input */}
@@ -111,7 +111,7 @@ const Home = () => {
           <span className="text-[10px] text-teal-600 dark:text-teal-400 uppercase font-black tracking-widest">Platform Core Advantages</span>
           <h2 className="text-3xl sm:text-4xl font-black leading-tight text-slate-800 dark:text-white">Why Patients Trust Book a Doctor</h2>
           <p className="text-slate-500 text-sm leading-relaxed">
-            We bridge the gap between patient requirements and clinic availability. Schedule online video appointments or standard in-clinic consultations with verified doctors in your city.
+            We bridge the gap between patient requirements and clinic availability. Schedule in-clinic consultations with verified doctors in your city.
           </p>
 
           <div className="space-y-4">

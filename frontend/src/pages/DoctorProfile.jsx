@@ -19,7 +19,7 @@ const DoctorProfile = () => {
   // Booking Form States
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
-  const [consultationType, setConsultationType] = useState('Online'); // Online or Offline
+  const [consultationType, setConsultationType] = useState('Offline'); // Always Offline
   const [symptoms, setSymptoms] = useState('');
   const [notes, setNotes] = useState('');
   const [reports, setReports] = useState([]); // File names mock list
@@ -275,18 +275,7 @@ const DoctorProfile = () => {
                 bookedSlots={[]} // Booked checks are simulated on submit
               />
 
-              {/* Consultation Type Selector */}
-              <div>
-                <label className="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wide">Consultation Type</label>
-                <select 
-                  className="glass-input text-xs"
-                  value={consultationType} 
-                  onChange={(e) => setConsultationType(e.target.value)}
-                >
-                  <option value="Online">Online Video Consultation (Simulated Link)</option>
-                  <option value="Offline">In-Clinic Consultation (Offline visit)</option>
-                </select>
-              </div>
+              {/* Consultation Type is implicitly In-Clinic (Offline) */}
 
               {/* Symptoms Input */}
               <div>

@@ -32,11 +32,7 @@ const PatientDashboard = () => {
   const [rescheduleDate, setRescheduleDate] = useState(null);
   const [rescheduleTime, setRescheduleTime] = useState(null);
 
-  // Video Call Simulator control
-  const [activeConsultationApp, setActiveConsultationApp] = useState(null);
-  const [consultationTimer, setConsultationTimer] = useState(15 * 60); // 15 mins
-  const [videoChatInput, setVideoChatInput] = useState('');
-  const [videoChatHistory, setVideoChatHistory] = useState([]);
+
 
   // Prescription View control
   const [activePrescriptionApp, setActivePrescriptionApp] = useState(null);
@@ -129,42 +125,7 @@ const PatientDashboard = () => {
     }
   };
 
-  // Video Consultation simulation timer decrement
-  useEffect(() => {
-    let timerInterval;
-    if (activeConsultationApp) {
-      timerInterval = setInterval(() => {
-        setConsultationTimer(prev => {
-          if (prev <= 1) {
-            clearInterval(timerInterval);
-            toast.info('Consultation time finished!');
-            setActiveConsultationApp(null);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => clearInterval(timerInterval);
-  }, [activeConsultationApp]);
 
-  const handleSendVideoChat = (e) => {
-    e.preventDefault();
-    if (videoChatInput.trim()) {
-      setVideoChatHistory(prev => [...prev, { sender: 'Patient', text: videoChatInput }]);
-      setVideoChatInput('');
-      // Simulate doctor auto-responses
-      setTimeout(() => {
-        setVideoChatHistory(prev => [...prev, { sender: 'Doctor', text: 'Thank you for explaining your symptoms. I am compiling your treatment recipe.' }]);
-      }, 2500);
-    }
-  };
-
-  const formatTimer = (secs) => {
-    const mins = Math.floor(secs / 60);
-    const remainingSecs = secs % 60;
-    return `${String(mins).padStart(2, '0')}:${String(remainingSecs).padStart(2, '0')}`;
-  };
 
   const printPrescription = () => {
     window.print();
@@ -253,15 +214,7 @@ const PatientDashboard = () => {
 
                       {/* Action Triggers */}
                       <div className="flex flex-wrap gap-2.5 pt-4 border-t border-slate-100 dark:border-slate-800/60">
-                        {app.appointmentStatus === 'Confirmed' && app.appointmentType === 'Online' && (
-                          <button 
-                            onClick={() => { setActiveConsultationApp(app); setConsultationTimer(15 * 60); setVideoChatHistory([]); }}
-                            className="px-3.5 py-2 rounded-xl bg-teal-600 text-white font-bold text-xs flex items-center space-x-1.5 hover-scale"
-                          >
-                            <Video className="h-3.5 w-3.5" />
-                            <span>Join Video Call</span>
-                          </button>
-                        )}
+
                         {['Pending', 'Confirmed', 'Rescheduled'].includes(app.appointmentStatus) && (
                           <>
                             <button 
@@ -391,65 +344,6 @@ const PatientDashboard = () => {
             >
               Confirm Rescheduling
             </button>
-          </div>
-        </div>
-      )}
-
-      {/* 7. Video Consultation Simulation Frame */}
-      {activeConsultationApp && (
-        <div className="fixed inset-0 z-50 bg-slate-950 flex flex-col justify-between">
-          
-          {/* Header */}
-          <div className="p-4 bg-slate-900 text-white flex justify-between items-center border-b border-slate-800">
-            <div className="flex items-center space-x-2.5">
-              <span className="h-2.5 w-2.5 bg-rose-500 rounded-full animate-ping"></span>
-              <span className="font-extrabold text-sm">Live Consultation: Dr. {activeConsultationApp.doctor?.user?.fullName}</span>
-            </div>
-            <div className="bg-slate-800 px-3.5 py-1.5 rounded-xl font-mono text-sm tracking-widest text-teal-400">
-              {formatTimer(consultationTimer)}
-            </div>
-            <button onClick={() => setActiveConsultationApp(null)} className="px-4 py-1.5 bg-rose-600 hover:bg-rose-700 text-xs font-extrabold rounded-xl text-white">Leave Consultation</button>
-          </div>
-
-          {/* Video Frames Split */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-            
-            {/* Feed area */}
-            <div className="md:col-span-2 relative bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 flex items-center justify-center">
-              <div className="text-center text-slate-500 space-y-2.5">
-                <Video className="h-10 w-10 mx-auto animate-pulse text-teal-500" />
-                <p className="text-xs font-bold">Simulating Webcam stream feed...</p>
-              </div>
-              
-              {/* Doctor Avatar picture-in-picture simulation */}
-              <div className="absolute top-4 right-4 h-32 w-24 bg-slate-850 rounded-2xl border border-slate-700 overflow-hidden shadow-2xl flex items-center justify-center">
-                <span className="text-[10px] text-slate-400">Your feed</span>
-              </div>
-            </div>
-
-            {/* Chat Panel */}
-            <div className="bg-slate-900 rounded-3xl border border-slate-800 flex flex-col justify-between overflow-hidden">
-              <div className="p-4 bg-slate-850 font-bold text-xs uppercase tracking-wider text-slate-400 border-b border-slate-800">Consultation Chat</div>
-              
-              <div className="flex-1 p-4 overflow-y-auto space-y-3.5 scroll-smooth">
-                {videoChatHistory.map((msg, i) => (
-                  <div key={i} className={`flex flex-col ${msg.sender === 'Patient' ? 'items-end' : 'items-start'}`}>
-                    <span className="text-[10px] text-slate-500 font-bold mb-0.5">{msg.sender}</span>
-                    <div className={`p-3 rounded-2xl text-xs max-w-[80%] leading-relaxed ${msg.sender === 'Patient' ? 'bg-teal-600 text-white rounded-tr-none' : 'bg-slate-800 text-slate-200 rounded-tl-none'}`}>
-                      {msg.text}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <form onSubmit={handleSendVideoChat} className="p-3 border-t border-slate-800 bg-slate-850 flex gap-2">
-                <input 
-                  type="text" className="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none" placeholder="Type messages..."
-                  value={videoChatInput} onChange={(e) => setVideoChatInput(e.target.value)}
-                />
-                <button type="submit" className="px-4 py-2 bg-teal-600 text-xs font-extrabold text-white rounded-xl hover:bg-teal-700">Send</button>
-              </form>
-            </div>
           </div>
         </div>
       )}
